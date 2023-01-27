@@ -1,38 +1,16 @@
 <template>
-  <h1>App</h1>
-  <base-card>
-    <template #headline>
-      <h2>Counter card</h2>
-    </template>
-    <template #body>
-      <p>{{ counter }}</p>
-      <base-button @click="onButtonClick"
-        >Add one value to counter +1</base-button
-      >
-    </template>
-  </base-card>
+  <the-header></the-header>
+  <router-view></router-view>
+  <the-footer></the-footer>
 </template>
 
 <script>
-import BaseButton from "./components/BaseButton/BaseButton.vue";
-import BaseCard from "./components/BaseCard/BaseCard.vue";
-import store from "./store/store";
+import TheHeader from "./layout/TheHeader/TheHeader.vue";
+import TheFooter from "./layout/TheFooter/TheFooter.vue";
 
 export default {
   name: "App",
-  components: { BaseCard, BaseButton },
-
-  computed: {
-    counter() {
-      return store.state.conuter;
-    },
-  },
-
-  methods: {
-    onButtonClick() {
-      store.dispatch("increment");
-    },
-  },
+  components: { TheHeader, TheFooter },
 };
 </script>
 
