@@ -1,6 +1,8 @@
 <template>
   <the-header></the-header>
-  <router-view></router-view>
+  <div class="main">
+    <router-view></router-view>
+  </div>
   <the-footer></the-footer>
 </template>
 
@@ -21,6 +23,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.main {
+  margin: 100px 0;
 }
 </style>
