@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'header-scroll': isScrollActive }">
     <div class="header-content">
       <router-link to="/" class="header-logo">VueShop</router-link>
       <button
@@ -32,11 +32,14 @@
   </header>
 </template>
 <script>
+const BREAK_POINT_FOR_NAV_SCROLL = 20;
+
 export default {
   name: "TheHeader",
   data() {
     return {
       isNavigationActive: false,
+      isScrollActive: false,
     };
   },
 
@@ -44,18 +47,41 @@ export default {
     handleVisibilityOfNavigation() {
       this.isNavigationActive = !this.isNavigationActive;
     },
+
+    onScroll() {
+      const { scrollY } = window;
+
+      if (scrollY > BREAK_POINT_FOR_NAV_SCROLL) {
+        this.isScrollActive = true;
+      } else {
+        this.isScrollActive = false;
+      }
+    },
+  },
+
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
   },
 };
 </script>
 <style lang="scss">
+body:has(.is-active) {
+  overflow: hidden;
+}
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 20px;
-  border-bottom: 1px solid #ddd;
-  background: #fff;
+  border-bottom: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.65);
+
+  &.header-scroll {
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+  }
 
   &-content {
     display: flex;
@@ -152,6 +178,7 @@ export default {
     width: auto;
     height: auto;
     padding: 0;
+    background: transparent;
   }
 
   &.is-active {
