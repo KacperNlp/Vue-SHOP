@@ -12,6 +12,9 @@
         v-else
       />
     </div>
+    <div class="banner-content">
+      <slot name="banner-content"></slot>
+    </div>
   </div>
 </template>
 <script>
@@ -46,8 +49,11 @@ export default {
 </script>
 <style lang="scss">
 .banner {
+  position: relative;
   width: 100%;
   height: 40vh;
+  margin-bottom: 70px;
+  overflow: hidden;
 
   @media (min-width: 1024px) {
     height: 90vh;

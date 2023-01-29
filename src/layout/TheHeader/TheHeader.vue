@@ -77,6 +77,7 @@ body:has(.is-active) {
   padding: 20px;
   border-bottom: 1px solid transparent;
   background: rgba(255, 255, 255, 0.65);
+  z-index: 10;
 
   &.header-scroll {
     border-bottom: 1px solid #ddd;
