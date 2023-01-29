@@ -11,11 +11,9 @@
     </template>
   </section-banner>
   <section-center>
-    <section-slider>
+    <section-slider :products="products">
       <template #slider-headline>
-        <base-headline headlinePosition="left"
-          ><h2>Special Offer!</h2></base-headline
-        >
+        <base-headline><h2>Special Offer!</h2></base-headline>
       </template>
     </section-slider>
   </section-center>
@@ -34,6 +32,12 @@ export default {
     SectionCenter,
     SectionSlider,
     BaseHeadline,
+  },
+
+  computed: {
+    products() {
+      return this.$store.getters.products;
+    },
   },
 };
 </script>

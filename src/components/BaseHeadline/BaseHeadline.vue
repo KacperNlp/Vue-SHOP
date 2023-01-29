@@ -43,8 +43,12 @@ export default {
     font-weight: 600;
     margin: 20px 0;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 568px) {
       font-size: 28px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 34px;
     }
   }
 }
